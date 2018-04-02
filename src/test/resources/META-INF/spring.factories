@@ -1,0 +1,2 @@
+org.springframework.test.context.ContextCustomizerFactory=com.dajudge.playground.support.MockitoContextCustomizerFactory
+org.springframework.test.context.TestExecutionListener=com.dajudge.playground.support.MockitoTestExecutionListener

@@ -1,0 +1,30 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.1' // JUnit 5 Gradle plugin
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.junit.platform.gradle.plugin'
+
+// Shortcut to have same repos for build as for buildscript
+repositories.addAll(project.rootProject.buildscript.repositories)
+
+dependencies {
+    compile "org.springframework:spring-context:5.0.4.RELEASE" // Spring
+
+    testCompile "org.apache.commons:commons-lang3:3.7" // This stuff should be part of JRE really...
+    testCompile "org.javassist:javassist:3.22.0-GA" // Required to proxy classes
+    testCompile "org.springframework:spring-test:5.0.4.RELEASE" // Spring test support
+    testCompile "org.mockito:mockito-junit-jupiter:2.17.0" // Official Mockito JUnit 5 integration
+    testCompile "org.junit.jupiter:junit-jupiter-api:5.0.1" // JUnit 5 API
+
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:5.0.1" // JUnit 5 runtime engine
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.6'
+}
